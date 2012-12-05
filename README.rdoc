@@ -1,0 +1,5 @@
+== Stormy Minimalist Blog Engine
+
+Features:
+
+Simple, minimalist full-screen blog writer

@@ -1,0 +1,26 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title Welcome to Cykod, Boston-based HTML5, Ruby on rails and Node.js Consulting
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %header#site-header
+      %nav#top-nav
+        %ul
+          %li
+            =link_to "about", "/about"
+          %li
+            =link_to "work", "/work"
+          %li
+            =link_to "blog", "/blog"
+      %h1
+        #logo
+          Boston-based HTML5, Ruby on Rails and Node.js Consulting
+        cyk&ouml;d
+    #content
+      = yield
