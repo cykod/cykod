@@ -3,3 +3,13 @@
 Features:
 
 Simple, minimalist full-screen blog writer
+
+
+- Checks if template exists at views/page/permalink - if so, renders that
+
+- Focus on Meta Data support:
+ - OG
+ - Author
+
+
+- Get rid of HAML in Stormy Gem

@@ -13,7 +13,6 @@ gem "normalize-rails"
 
 gem 'mongoid', github: 'mongoid/mongoid', branch: '4.0.0-dev'
 gem 'devise'
-gem 'rails-backbone'
 gem 'formtastic'
 
 # Gems used only for assets and not required
@@ -32,7 +31,6 @@ gem 'formtastic'
 group :development, :test do
   gem 'mongoid-rspec'
   gem 'database_cleaner'
-  gem "spork"
   gem "simplecov"
   gem "factory_girl"
 

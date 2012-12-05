@@ -58,7 +58,7 @@ Cykod::Application.routes.draw do
   #
 
 
-  root to:  "page#index"
+  root to:  "stormy/pages#index"
 
   get '*page' => "stormy/pages#show"
 
