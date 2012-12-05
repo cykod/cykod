@@ -11,14 +11,19 @@ class Stormy::Post
   field :body_html
 
   validates :permalink, uniqueness: true, presence: true
+  validates :title, presence: true
 
-  before_validations :generate_permalink, on: :create
+  before_validation :generate_permalink, :on => :create
 
   protected
 
   def generate_permalink
     if self.permalink.blank? && self.title.present?
-      self.permalink = self.title.downcase.gsub(/[^a-z0-9\-_]+/," ").gsub(/[ \-\t]+/,"-")
+      self.permalink = self.title.downcase
+                           .gsub(/[^a-z0-9\-_]+/," ")
+                           .gsub(/[ \-\t]+/,"-")
+                           .gsub(/^-+/,'')
+                           .gsub(/-+$/,'')
     end
   end
 

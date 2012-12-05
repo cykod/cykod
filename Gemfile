@@ -30,9 +30,17 @@ gem 'formtastic'
  end
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'mongoid-rspec'
   gem 'database_cleaner'
+  gem "spork"
+  gem "simplecov"
+  gem "factory_girl"
+
+  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
+  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
+  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
 end
 
  gem 'jquery-rails'

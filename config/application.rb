@@ -6,6 +6,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+#
+#
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
