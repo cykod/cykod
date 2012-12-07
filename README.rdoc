@@ -1,5 +1,7 @@
 == Stormy Minimalist Blog Engine
 
+# Get edge rails on Heroku https://gist.github.com/3025502
+
 Features:
 
 Simple, minimalist full-screen blog writer
