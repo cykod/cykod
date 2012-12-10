@@ -14,10 +14,10 @@ gem "normalize-rails"
 
 
 gem 'mongoid', github: 'mongoid/mongoid', branch: '4.0.0-dev'
-gem 'devise'
-gem 'formtastic'
 
 gem "thin"
+
+gem "stormy", path: "vendor/engines/stormy"
 
 # Gems used only for assets and not required
 # # in production environments by default.

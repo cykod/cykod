@@ -66,5 +66,8 @@ module Cykod
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # https://github.com/rails/rails/issues/8119
+    config.relative_url_root = ''
   end
 end

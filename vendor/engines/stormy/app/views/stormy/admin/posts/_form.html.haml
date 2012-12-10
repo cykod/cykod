@@ -1,0 +1,35 @@
+#post-form
+  = form_for [ :admin, @post], multipart: true  do |f| 
+    #post-header
+      #post-photo
+        = f.file_field :photo, as: :file
+        - if @post.photo?
+          .image
+            = image_tag(@post.photo(:thumb))
+        %label
+          Upload or Drag in a Picture
+
+      #post-save
+        = f.submit "Save", name: "save"
+        - if !@post.published?
+          = f.submit "Publish", name: "publish"
+        - else
+          = f.submit "Unpublish", name: "unpublish"
+
+      #post-permalink-field
+        = f.text_field :permalink, placeholder: t(".permalink-placeholder")
+      #post-title-field
+        = f.text_field :name, placeholder: t(".name-placeholder")
+      #post-metadata-fields
+        = t(".posted-by");
+        #post-author-field
+          = f.text_field :author, placeholder: t(".author-placeholder")
+        = t(".posted-at");
+        #post-published-at-field
+          = f.date_field :published_at_date, placeholder: t(".published-placeholder")
+          = f.time_field :published_at_time, placeholder: t(".published-placeholder")
+        
+
+        .clear
+    #post-body-field
+      = f.text_area :body

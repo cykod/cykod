@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 129eac024382c7fbdad2007e86cf25778d5f6787
+  revision: 0adcf6d90e787f2c953d2d58b875d1ff9ef71da8
   specs:
     actionmailer (4.0.0.beta)
       actionpack (= 4.0.0.beta)
@@ -83,13 +83,13 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: e227bb4bf2880f7b5466a9d9a1f05c6a35a1944a
+  revision: 4c760a38fe60136c9f98dfdb16e12e01fb78e1bf
   specs:
     rspec-core (2.12.1)
 
 GIT
   remote: git://github.com/rspec/rspec-expectations.git
-  revision: 5baaccafec67c23f563627eac7363d39aa4d7619
+  revision: cf52fe66fb76b6cdd529065a211a6a37aa738b51
   specs:
     rspec-expectations (2.12.0)
       diff-lcs (~> 1.1.3)
@@ -102,7 +102,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: 07d7c77e9fcb58471fccff93506d113e45c100c0
+  revision: 04ec29ed0ddc4e2adf431f464f2adc792a3c2068
   specs:
     rspec-rails (2.12.0)
       actionpack (>= 3.0)
@@ -121,22 +121,29 @@ GIT
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
 
+PATH
+  remote: vendor/engines/stormy
+  specs:
+    stormy (0.0.1)
+      haml (>= 3.1.7)
+      i18n
+      mongoid (>= 3.0.0)
+      mongoid-paperclip
+      rails (~> 4.0.0.beta)
+      redcarpet
+
 GEM
   remote: https://rubygems.org/
   specs:
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
     builder (3.1.4)
+    cocaine (0.4.2)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
-    devise (1.5.3)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      warden (~> 1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -144,8 +151,6 @@ GEM
       multi_json (~> 1.0)
     factory_girl (4.1.0)
       activesupport (>= 3.0.0)
-    formtastic (2.2.1)
-      actionpack (>= 3.0)
     haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.1)
@@ -158,7 +163,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
-    minitest (4.3.2)
+    minitest (4.3.3)
+    mongoid-paperclip (0.0.8)
+      paperclip (>= 2.3.6)
     mongoid-rspec (1.5.5)
       mongoid (>= 3.0.1)
       rake
@@ -167,7 +174,12 @@ GEM
     multi_json (1.4.0)
     normalize-rails (2.0.1)
     origin (1.0.11)
-    orm_adapter (0.0.7)
+    paperclip (3.3.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
     polyglot (0.3.3)
     rack (1.4.1)
     rack-test (0.6.2)
@@ -175,6 +187,7 @@ GEM
     rake (10.0.2)
     rdoc (3.12)
       json (~> 1.4)
+    redcarpet (2.2.2)
     sass (3.2.3)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -204,8 +217,6 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    warden (1.2.1)
-      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -215,9 +226,7 @@ DEPENDENCIES
   arel
   coffee-rails!
   database_cleaner
-  devise
   factory_girl
-  formtastic
   haml
   journey!
   jquery-rails
@@ -233,6 +242,7 @@ DEPENDENCIES
   sass-rails!
   simplecov
   sprockets-rails
+  stormy!
   thin
   turbolinks
   uglifier (>= 1.0.3)

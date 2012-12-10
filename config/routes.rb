@@ -1,4 +1,5 @@
 Cykod::Application.routes.draw do
+  get "demo/page"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,9 +58,8 @@ Cykod::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   #
 
+ # mount Stormy::Engine => "/blog", as: "stormy"
+ mount Stormy::Engine => "/", as: "stormy"
 
-  root to:  "stormy/pages#index"
-
-  get '*page' => "stormy/pages#show"
-
+ #  root to: "demo#page"
 end

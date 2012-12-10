@@ -1,0 +1,163 @@
+html,body  {
+  max-width:100%;
+
+}
+
+@mixin post-form-field {
+  width:100%;
+  border:1px solid #FFF;
+
+  &:focus {
+    border:1px solid #DDD;
+    background-color:#EEE;
+    outline: none;
+  }
+}
+
+.clear { clear:both; }
+
+#post-form {
+  max-width:100%;
+
+  font-size:16px;
+  font-family:arial;
+
+  input, textarea { font-size: 16px; font-family:arial; }
+
+
+  #post-header {
+    position:relative;
+
+    #post-photo {
+      position:absolute;
+      display:table;
+      left:0px;
+      width:60px;
+      height: 90px;
+      overflow:hidden;
+      border:1px solid #CCC;
+      background-color:#CCC;
+
+      input {
+        position:absolute;
+        opacity:0;
+        z-index:10;
+        font-size:300px;
+
+      }
+
+      label {
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+        display:table-cell;
+        vertical-align:middle;
+        text-align:center;
+      }
+
+      .image {
+        position:absolute;
+        left:0px;
+        opacity:1.0;
+
+        img { max-width:100%; }
+
+      }
+    }
+
+    #post-save {
+      position:absolute;
+      right:0px;
+      top:0px;
+      width:120px;
+
+      input { width:100%; }
+    }
+
+    #post-title-field {
+      padding-top:4px;
+      margin-left:70px;
+      margin-right:130px;
+      input { 
+        font-size:32px;
+        width:100%;
+        @include post-form-field;
+      }
+
+
+      .field_with_errors input { border:1px solid #F00; }
+
+    }
+
+    #post-permalink-field {
+      position:relative;
+      margin-left:80px;
+      margin-right:130px;
+      height:20px;
+
+      &:before {
+        position:absolute;
+        left:0px;
+        content: "/";
+        color:black;
+        top:3px;
+      }
+
+      input[type=text] {
+        margin-left:5px;
+        @include post-form-field;
+        font-size:16px;
+        width:100%;
+      }
+    }
+
+    #post-metadata-fields {
+      margin-left: 70px;
+      #post-author-field {
+        display:inline-block; 
+        position:relative;
+        max-width:300px;
+
+        input {
+          width:100%; 
+          @include post-form-field;
+        }
+      }
+
+      #post-published-at-field {
+        display:inline-block;
+
+        input { width: 150px; }
+
+      }
+
+      input { 
+        border:0px; 
+        @include post-form-field;
+      }
+    }
+
+
+  }
+
+
+  #post-body-field {
+    width:100%;
+
+    textarea { 
+      width:100%; 
+      min-height:600px;
+      font-size:16px;
+      border:0px;
+
+      &:focus {
+        outline:none;
+
+      }
+
+    }
+  }
+
+}
+

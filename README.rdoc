@@ -23,4 +23,13 @@ Next:
 2. Add file uploads for Images
 3. Add Posted on Date
 4. Add Hardcoded post layout templates
-5. 
+
+
+== Problems
+
+Need to add:
+
+    # https://github.com/rails/rails/issues/8119
+    config.relative_url_root = ''
+
+To main apps application.rb to mount the engine anywhere other than root
