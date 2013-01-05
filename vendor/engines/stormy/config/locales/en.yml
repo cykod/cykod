@@ -9,6 +9,7 @@ en:
           published-placeholder: published at
           posted-by: By
           posted-at: published
+          picture: Upload Image
         index:
           name: Post Title
           published: Published

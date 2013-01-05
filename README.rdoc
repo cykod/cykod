@@ -14,7 +14,9 @@ Simple, minimalist full-screen blog writer
  - Author
 
 
-- Get rid of HAML in Stormy Gem
+Integrate PageDown
+http://code.google.com/p/pagedown/
++ Drag and drop file upload
 
 
 Next:
@@ -23,6 +25,8 @@ Next:
 2. Add file uploads for Images
 3. Add Posted on Date
 4. Add Hardcoded post layout templates
+5. Add Analytics into the system - Optional Live Analytics (d3?)
+6. 
 
 
 == Problems

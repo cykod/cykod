@@ -14,13 +14,14 @@ class Stormy::Admin::PostsController < Stormy::Admin::BaseController
   end
 
   def create
-    @post = Stormy::Post.new(params.require(:post).permit(:name,:permalink,:body,:published_at_date,:published_at_time))
+    @post = Stormy::Post.new(post_params)
     
     @post.publish if params[:publish]
     @post.unpublish if params[:unpublish]
 
-    if @post.save
+    handle_post_publication
 
+    if @post.save
       return redirect_to( { action: 'index' }, 
                          notice: t("stormy.admin.posts.created"))
     end
@@ -29,16 +30,27 @@ class Stormy::Admin::PostsController < Stormy::Admin::BaseController
 
   def update
     @post = Stormy::Post.where(permalink: params[:id]).first
-    @post.attributes = params.require(:post).permit(:name,:permalink,:body,:photo,:published_at_date,:published_at_time)
+    @post.attributes = post_params
 
-    @post.publish if params[:publish]
-    @post.unpublish if params[:unpublish]
+    handle_post_publication
 
     if @post.save
       return redirect_to( { action: 'index' }, 
                          notice: t("stormy.admin.posts.saved"))
     end
     render :action => 'edit'
+  end
+
+  protected
+
+  def post_params
+    params.require(:post)
+          .permit(:name,:permalink,:body,:photo,:published_at_date,:published_at_time)
+  end
+
+  def handle_post_publication
+    @post.publish if params[:publish]
+    @post.unpublish if params[:unpublish]
   end
 
 end

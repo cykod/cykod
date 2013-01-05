@@ -7,7 +7,7 @@
           .image
             = image_tag(@post.photo(:thumb))
         %label
-          Upload or Drag in a Picture
+          = t(".picture")
 
       #post-save
         = f.submit "Save", name: "save"
@@ -33,3 +33,62 @@
         .clear
     #post-body-field
       = f.text_area :body
+
+
+:javascript
+  $(document).on("page:change ready",function() {
+
+    $.fn.insertAtCaret = function(text) {
+      return this.each(function() {
+          if (document.selection && this.tagName == 'TEXTAREA') {
+              //IE textarea support
+              this.focus();
+              sel = document.selection.createRange();
+              sel.text = text;
+              this.focus();
+          } else if (this.selectionStart || this.selectionStart == '0') {
+              //MOZILLA/NETSCAPE support
+              startPos = this.selectionStart;
+              endPos = this.selectionEnd;
+              scrollTop = this.scrollTop;
+              this.value = this.value.substring(0, startPos) + text + this.value.substring(endPos, this.value.length);
+              this.focus();
+              this.selectionStart = startPos + text.length;
+              this.selectionEnd = startPos + text.length;
+              this.scrollTop = scrollTop;
+          } else {
+              // IE input[type=text] and other browsers
+              this.value += text;
+              this.focus();
+              this.value = this.value;    // forces cursor to end
+          }
+      });
+    };
+    function handleFileSelect(evt) {
+      evt.stopPropagation();
+      evt.preventDefault();
+
+      var files = evt.dataTransfer.files; // FileList object.
+
+      // files is a FileList of File objects. List some properties.
+      var output = [];
+      for (var i = 0, f; f = files[i]; i++) {
+        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+          f.size, ' bytes, last modified: ',
+            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+              '</li>');
+      }
+      $("#post_body").insertAtCaret(output.join(''))
+    }
+
+    function handleDragOver(evt) {
+      evt.stopPropagation();
+      evt.preventDefault();
+      evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+    }
+
+    // Setup the dnd listeners.
+    var dropZone = document.getElementById('post-body-field');
+    dropZone.addEventListener('dragover', handleDragOver, false);
+    dropZone.addEventListener('drop', handleFileSelect, false);
+  });
