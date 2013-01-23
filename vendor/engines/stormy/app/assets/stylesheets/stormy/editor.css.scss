@@ -1,3 +1,62 @@
+$framecolor:#f2f2f2;
+$linkcolor:#cccccc;
+$textcolor:#4d4d4d;
+
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.clear { clear:both; }
+
+body { font-family:arial; }
+
+#post-frame {
+  background-color:$framecolor;
+  padding:20px 30px 40px 0px;
+  max-width:1140px;
+  margin: 0 auto;
+
+  .filter { float:left; padding-left:10px; }
+  .links { text-align:right; padding-bottom:10px;  }
+  a { 
+    text-transform:uppercase;
+    text-decoration:none;
+    font-weight:bold;
+    color:$linkcolor;
+    font-size:14px;
+    
+
+  }
+}
+
+#left-content {
+  clear:both;
+  width:50%;
+  padding-right: 20px;
+  float:left;
+
+  #post-list {
+    margin:0;
+    padding:0px;
+    background-color:white;
+    min-height:600px;
+  }
+}
+
+#right-content {
+  width:50%;
+  float:left;
+
+  #post-editor {
+    background-color:white;
+    min-height:600px;
+  }
+}
+
+
+
+
+
+
 html,body  {
   max-width:100%;
 

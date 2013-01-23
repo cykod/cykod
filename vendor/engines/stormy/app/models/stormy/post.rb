@@ -17,6 +17,8 @@ class Stormy::Post
   field :body
   field :body_html
 
+  field :views, type: Integer, default: 0
+
   has_mongoid_attached_file :photo, 
     styles: { icon: "16x16#", thumb: "60x90#", small: "500x800>" }.merge(Stormy.post_image_styles)
 

@@ -1,21 +1,32 @@
-%h1= t(".title")
+:javascript
+  Stormy.postData = #{@posts.to_json};
 
-= link_to t(".new_post"), stormy.new_admin_post_path
+  $(document).ready(Stormy.load);
+  $(document).bind("page:change",Stormy.load);
 
-%table.table
-  %thead
-    %tr
-      %th= t(".name")
-      %th= t(".published")
-      %th= t(".permalink")
-      %th= t(".published_at")
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td= link_to post.name, stormy.edit_admin_post_path(post)
-        %td
-          = post.published? ? t(".yes") : t(".no")
-          - if post.published? && post.published_at > Time.now
-            = t(".future")
-        %td= link_to post_path(post), post_path(post), "data-no-turbolink" =>  true
-        %td= post.published_at && post.published_at.strftime(t("stormy.date.formats.short")) if post.published?
+#posts-content
+
+%script(type="handlebars" id="stormy-index")
+  %section#post-frame
+    #left-content
+      .filter
+        %a(href="#") All
+        %a(href="#") Published
+        %a(href="#") Draft
+      .links
+        %a(href="#") New Post
+      %ul#post-list
+    #right-content
+      .links
+        %a(href="#") Edit
+        %a(href="#") Save
+      #post-editor
+    .clear
+
+
+%script(type="handlebars" id="stormy-post")
+  %h2 {{name}}
+  .date {{date}}
+  .permalink {{permalink}}
+  .views {{views}}
+

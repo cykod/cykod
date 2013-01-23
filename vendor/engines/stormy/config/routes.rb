@@ -1,6 +1,7 @@
 Stormy::Engine.routes.draw do
 
   namespace "admin" do 
+    root to: "posts#index"
     resources :posts
   end
 
